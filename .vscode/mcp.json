@@ -19,7 +19,15 @@
                 "simplemath.py"
             ],
             "envFile": "${workspaceFolder}/.env"
-        }
-        
+        },
+        "weather": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "${workspaceFolder}/server",
+                "run",
+                "weather.py"
+            ]
+        },
     }
 }
