@@ -8,6 +8,18 @@
                 "@modelcontextprotocol/server-github"
             ],
             "envFile": "${workspaceFolder}/.env"
+        },
+        "simplemath": {
+            "type": "stdio",
+            "command": "uv",
+            "args": [
+                "--directory",
+                "${workspaceFolder}/server",
+                "run",
+                "simplemath.py"
+            ],
+            "envFile": "${workspaceFolder}/.env"
         }
+        
     }
 }
