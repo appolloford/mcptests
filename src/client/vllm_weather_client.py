@@ -10,7 +10,7 @@ from mcp.client.stdio import stdio_client
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_mcp_adapters.tools import convert_mcp_tool_to_langchain_tool, load_mcp_tools
 from langgraph.prebuilt import create_react_agent
-from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()  # load environment variables from .env
@@ -20,7 +20,14 @@ class MCPClient:
         # Initialize session and client objects
         self.session: Optional[ClientSession] = None
         self.exit_stack = AsyncExitStack()
-        self.model = ChatOllama(model="llama3.2")
+        self.model = ChatOpenAI(
+            # model="meta-llama/Llama-3.1-8B-Instruct",
+            model=os.environ.get("HF_MODEL"),
+            openai_api_key="EMPTY",
+            openai_api_base="http://localhost:8000/v1",
+            # max_tokens=5,
+            # temperature=0,
+        )
 
     async def connect_to_server(self, server_script_path: str):
         """Connect to an MCP server
@@ -37,14 +44,12 @@ class MCPClient:
         server_params = StdioServerParameters(
             command=command,
             args=[server_script_path],
-            env=None,
-            # env=os.environ.copy()  # on cluster using environment modules
+            env=os.environ.copy()
         )
 
         stdio_transport = await self.exit_stack.enter_async_context(stdio_client(server_params))
         self.stdio, self.write = stdio_transport
         self.session = await self.exit_stack.enter_async_context(ClientSession(self.stdio, self.write))
-
         await self.session.initialize()
 
         # List available tools
