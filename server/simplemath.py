@@ -1,3 +1,4 @@
+# example from https://dev.to/composiodev/how-to-build-mcp-servers-and-clients-from-scratch-4o2f
 from mcp.server.fastmcp import FastMCP
 import math
 
