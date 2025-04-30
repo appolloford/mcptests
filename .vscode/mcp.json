@@ -14,7 +14,7 @@
             "command": "uv",
             "args": [
                 "--directory",
-                "${workspaceFolder}/server",
+                "${workspaceFolder}/src/server",
                 "run",
                 "simplemath.py"
             ],
@@ -24,10 +24,10 @@
             "command": "uv",
             "args": [
                 "--directory",
-                "${workspaceFolder}/server",
+                "${workspaceFolder}/src/server",
                 "run",
                 "weather.py"
             ]
-        },
+        }
     }
 }
