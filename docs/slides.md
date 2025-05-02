@@ -205,11 +205,11 @@ go install github.com/mark3labs/mcphost@latest
 # Launch ollama with MCP
 
 ```bash +exec
-OLLAMA_CONTEXT_LENGTH=16384 $HOME/go/bin/mcphost -m ollama:llama3.2 --config mcp.json
+sed "s|\${workspaceFolder}|$(pwd)|g" .vscode/mcp.json > config.json
+OLLAMA_CONTEXT_LENGTH=16384 $HOME/go/bin/mcphost -m ollama:llama3.2 --config config.json
 ```
 
-- You can reuse the config file `.vscode/mcp.json` but replace the `${workspaceFolder}`
-  variable to the correct path
+- Replace `${workspaceFolder}` in `.vscode/mcp.json` with the real path
 - Same file can be used in other client, e.g., Claude Desktop
 
 <!-- end_slide -->
@@ -317,4 +317,26 @@ Next?
 ===
 
 - [A2A](https://github.com/google/A2A)
+
+<!-- end_slide -->
+
+Co-perspective: MCP for AI/ML projects
+===
+
+- EoI for a project to extract synthesis parameters/experimental settings that optimize a material with regards to a specific characteristic from publications
+  - state-of-the-art at the time used RAG
+  - MCP could have advantages like continuous integration of new results and no need to put publication paragraphs into a vector database
+
+- BioMCP: a specialized Model Context Protocol (MCP) server that connects AI assistants like Claude to biomedical data sources, including ClinicalTrials.gov, PubMed, and MyVariant.info.
+
+<!-- end_slide -->
+
+Co-perspective II: Some more thoughts
+===
+
+- ML pipelines as tools
+  - we often don't trust LLMs because of hallucinations and it might not be efficient to prediction tasks to the LLM
+  - MCP could use pre-implemented, tested pipelines as tools such that we get their result while allowing easy interaction with the pipeline and presentation of the results
+
+- Data privacy?
 

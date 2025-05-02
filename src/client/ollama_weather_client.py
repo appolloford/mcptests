@@ -8,7 +8,7 @@ from mcp.client.stdio import stdio_client
 
 # from anthropic import Anthropic
 from langchain_core.messages import AIMessage, HumanMessage
-from langchain_mcp_adapters.tools import convert_mcp_tool_to_langchain_tool, load_mcp_tools
+from langchain_mcp_adapters.tools import load_mcp_tools
 from langgraph.prebuilt import create_react_agent
 from langchain_ollama import ChatOllama
 from dotenv import load_dotenv
