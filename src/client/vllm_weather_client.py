@@ -64,7 +64,7 @@ class MCPClient:
         }
 
         response = await self.session.list_tools()
-        available_tools = [convert_mcp_tool_to_langchain_tool(self.session, tool) for tool in response.tools]
+        available_tools = await load_mcp_tools(self.session)
 
         # Create Ollama agent
         agent = create_react_agent(self.model, available_tools)
