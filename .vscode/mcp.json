@@ -1,5 +1,19 @@
 {
     "servers": {
+        // "c3se": {
+        //     "type":"sse",
+        //     "url": "http://localhost:8395/sse",
+        // },
+        "c3se": {
+            "type": "stdio",
+            "command": "uv",
+            "args": [
+                "--directory",
+                "${workspaceFolder}/src/server",
+                "run",
+                "c3se.py"
+            ]
+        },
         "github": {
             "type": "stdio",
             "command": "npx",
