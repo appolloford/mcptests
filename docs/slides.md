@@ -203,7 +203,7 @@ go install github.com/mark3labs/mcphost@latest
 
 # Launch ollama with MCP
 
-```bash +exec
+```bash
 sed "s|\${workspaceFolder}|$(pwd)|g" .vscode/mcp.json > config.json
 OLLAMA_CONTEXT_LENGTH=16384 $HOME/go/bin/mcphost -m ollama:llama3.2 --config config.json
 ```
