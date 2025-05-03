@@ -87,8 +87,13 @@ Using MCP server in VSCode
 ```bash
 git clone https://github.com/appolloford/mcptests.git
 cd mcptests
-touch .env # save sensitive environment variables
+touch .env # save API keys or customized environment variables
 ```
+
+<!-- end_slide -->
+
+Using MCP server in VSCode (continue)
+===
 
 # Create python venv
 
@@ -120,16 +125,10 @@ uv pip install -e .
 code .
 ```
 
-<!-- end_slide -->
-
-Using MCP server in VSCode (continue)
-===
-
 # Open copilot tab
 
-- Select `Agent` mode
+- Select `Agent` mode and choose a model you prefer
 - Start ask questions. E.g. How can I get an account on Vera
-- You can choose the model you prefer
 
 <!-- end_slide -->
 
@@ -261,12 +260,10 @@ class MCPClient:
         # launch a server session and connect this client session to it
 
     async def process_query(self, query: str) -> str:
-        ...
         available_tools = await load_mcp_tools(self.session)
         agent = create_react_agent(self.model, available_tools)
         response = await agent.ainvoke(messages)
         ...
-
 ```
 
 - Similar to the official weather client example
