@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import requests
 from bs4 import BeautifulSoup
 from mcp.server.fastmcp import FastMCP
@@ -41,8 +42,8 @@ def get_c3se_news() -> str:
     return text
 
 
-# execute and return the stdio output
-if __name__ == "__main__":
+def main():
+    """Main function to run the server."""
     import argparse
     parser = argparse.ArgumentParser(description="Run the C3SE server.")
     parser.add_argument(
@@ -63,3 +64,6 @@ if __name__ == "__main__":
         print(f"Unknown transport method: {args.transport}. Defaulting to stdio.")
         mcp.run(transport="stdio")
 
+# execute and return the stdio output
+if __name__ == "__main__":
+    main()    

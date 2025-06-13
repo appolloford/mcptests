@@ -6,7 +6,9 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "bs4>=0.0.2",
+    "chainlit>=2.5.5",
     "httpx>=0.28.1",
+    "langchain>=0.3.25",
     "langchain-mcp-adapters>=0.0.9",
     "langchain-ollama>=0.3.2",
     "langchain-openai>=0.3.14",
@@ -14,5 +16,6 @@ dependencies = [
     "mcp[cli]>=1.6.0",
     "ollama>=0.4.8",
     "python-dotenv>=1.1.0",
-    "vllm>=0.8.4",
 ]
+[project.scripts]
+c3se = "src.server.c3se:main"
